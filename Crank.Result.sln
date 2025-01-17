@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crank.Result", "crank.result\Crank.Result.csproj", "{71031638-CD5B-42E1-BEDD-C6EBEE05BDE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crank.Result.Tests", "crank.result.tests\Crank.Result.Tests.csproj", "{5ADA374E-E3C4-4431-A93D-9674E46F3B0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB88E687-E9FB-4271-875F-A2D3DADA1DCD}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71031638-CD5B-42E1-BEDD-C6EBEE05BDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71031638-CD5B-42E1-BEDD-C6EBEE05BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71031638-CD5B-42E1-BEDD-C6EBEE05BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71031638-CD5B-42E1-BEDD-C6EBEE05BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ADA374E-E3C4-4431-A93D-9674E46F3B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ADA374E-E3C4-4431-A93D-9674E46F3B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ADA374E-E3C4-4431-A93D-9674E46F3B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ADA374E-E3C4-4431-A93D-9674E46F3B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57F043E3-6D8C-47BE-B0D6-ED7DBA79F882}
+	EndGlobalSection
+EndGlobal
