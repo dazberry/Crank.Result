@@ -94,7 +94,6 @@ namespace Crank.Result
 
 		public TPrimaryValue? Value => _primaryValue;
 
-
 		protected Result(bool succeeded, TPrimaryValue? value = default, string? message = default)
 			: base(succeeded, message)
 		{
@@ -129,6 +128,9 @@ namespace Crank.Result
 			value = Value;
 			message = Message;
 		}
+
+		public (bool succeeded, TPrimaryValue value, string?  message) NotNull =>
+			Value == null ? (false, default!, Message) : (Succeeded, Value, Message);
 
 		public static bool operator ==(Result<TPrimaryValue> result, bool value) =>
 			result is not null && result.Succeeded == value;
@@ -189,7 +191,6 @@ namespace Crank.Result
 			Value = secondaryValue;
 		}
 
-
 		protected Result(bool succeeded, TPrimaryValue? primaryValue, TSecondaryValue? secondaryValue, string? message = default) :
 			base(succeeded, primaryValue, message)
 		{
@@ -212,7 +213,6 @@ namespace Crank.Result
 		// Result<Guid, int> res = (succeeded, primaryValue, secondaryValue, message)
 		public static implicit operator Result<TPrimaryValue, TSecondaryValue>((bool succeeded, TPrimaryValue primaryValue, TSecondaryValue secondaryValue, string message) tup) =>
 			new(false, tup.primaryValue, tup.secondaryValue, tup.message);
-
 
 		//var (succeeded, value) =
 		public void Deconstruct(out bool succeeded, out TSecondaryValue? value)
@@ -237,6 +237,9 @@ namespace Crank.Result
 			secondaryValue = Value;
 			message = Message;
 		}
+
+		public new (bool succeeded, TSecondaryValue value, string? message) NotNull =>
+			Value == null ? (false, default!, Message) : (Succeeded, Value, Message);
 
 
 		public static bool operator ==(Result<TPrimaryValue, TSecondaryValue> result, bool value) =>

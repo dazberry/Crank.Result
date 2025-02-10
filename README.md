@@ -69,7 +69,15 @@ Static Methods:
 >
 > bool haveValue = result.TryGetValue< Guid>(out Guid? value);
 > Guid? value = result.As< Guid>();
- 
+>
+> [v1.1] deconstruct without nullable inference
+> var (succeeded, guidValue, message) = result.NotNull;
+> notes: 
+>	if value is null, succeeded will be destructed as false, guidValue will be set as default
+>	equivant of:
+>		succeeded = (succeeded && guidValue != null)
+
+
  
 ## Result< TPrimaryValue, TSecondaryValue > 
  
@@ -103,6 +111,13 @@ Static Methods:
 >
 > bool haveValue = result.TryGetValue< int>(out int? value);
 > int? value = result.As< int>();
+>
+> [v1.1] deconstruct without nullable inference
+> var (succeeded, intValue, message) = result.NotNull;
+> notes: 
+>	if value is null, succeeded will be destructed as false, intValue will be set as default
+>	equivant of:
+>		succeeded = (succeeded && intValue != null)
  
 ### Setting and extracting both values 
 > Result<Guid, int> result = (true, Guid.NewGuid(), 200, "Success Message");
