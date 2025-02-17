@@ -1,3 +1,4 @@
+
 # Crank.Result
  Crank result are a set of *slightly opinionated* result classes.
    
@@ -70,12 +71,15 @@ Static Methods:
 > bool haveValue = result.TryGetValue< Guid>(out Guid? value);
 > Guid? value = result.As< Guid>();
 >
-> [v1.1] deconstruct without nullable inference
-> var (succeeded, guidValue, message) = result.NotNull;
+
+#### [v1.2] Deref
+> deconstruct reference type without nullable inference
+> var (succeeded, value, message) = result.Deref();
 > notes: 
->	if value is null, succeeded will be destructed as false, guidValue will be set as default
+>	if value is null, succeeded will be destructed as false
 >	equivant of:
->		succeeded = (succeeded && guidValue != null)
+>		succeeded = (succeeded && value != null)
+>	can change this behaviour by calling Deref(false)
 
 
  
@@ -112,12 +116,9 @@ Static Methods:
 > bool haveValue = result.TryGetValue< int>(out int? value);
 > int? value = result.As< int>();
 >
-> [v1.1] deconstruct without nullable inference
-> var (succeeded, intValue, message) = result.NotNull;
-> notes: 
->	if value is null, succeeded will be destructed as false, intValue will be set as default
->	equivant of:
->		succeeded = (succeeded && intValue != null)
+#### [v1.2] Deref
+> deconstruct reference type without nullable inference
+> var (succeeded, value, message) = result.Deref();
  
 ### Setting and extracting both values 
 > Result<Guid, int> result = (true, Guid.NewGuid(), 200, "Success Message");
@@ -158,7 +159,7 @@ Static Methods:
 			return Result.Fail(ex);
 		}
 	}
- 	
+	
 ## Return success data or failure
 	public Result<IEnumerable<RowData>> LoadRowData(string filename)
 	{
@@ -197,3 +198,14 @@ Static Methods:
 	if (result.TryGetValue<Exception>(out Exception _))
 		return InternalServerError();
 
+## Change Logs
+
+**[1.0]** 
+Initial release
+
+**[1.1]** 
+Added NotNull property and tests
+
+**[1.2]** 
+Removed NotNull property and tests
+Added Deref Result extensions methods and tests
