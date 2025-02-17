@@ -129,9 +129,6 @@ namespace Crank.Result
 			message = Message;
 		}
 
-		public (bool succeeded, TPrimaryValue value, string?  message) NotNull =>
-			Value == null ? (false, default!, Message) : (Succeeded, Value, Message);
-
 		public static bool operator ==(Result<TPrimaryValue> result, bool value) =>
 			result is not null && result.Succeeded == value;
 
@@ -237,10 +234,6 @@ namespace Crank.Result
 			secondaryValue = Value;
 			message = Message;
 		}
-
-		public new (bool succeeded, TSecondaryValue value, string? message) NotNull =>
-			Value == null ? (false, default!, Message) : (Succeeded, Value, Message);
-
 
 		public static bool operator ==(Result<TPrimaryValue, TSecondaryValue> result, bool value) =>
 			result is not null && result.Succeeded == value;
